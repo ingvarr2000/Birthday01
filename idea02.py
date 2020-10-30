@@ -27,6 +27,9 @@ print all_bds
 print all_years
 
 if today in all_bds:
-    print "Congrats", all_bds[today]
+    print "Congrats"
+    for person in all_bds[today]:
+        age = int(fyear) - int(all_years[person])
+        print person, "who turns", age, "years old today"
 else:
     print "No one to congratulate :("
