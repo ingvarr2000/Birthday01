@@ -1,9 +1,10 @@
 
 import csv, re
-from datetime import date
+from datetime import date, timedelta
 
 all_bds = {}
 all_years = {}
+days_ahead = 7
 
 fdate = date.today().strftime('%m/%d').split('/')
 fyear = int(date.today().strftime('%Y'))
@@ -26,14 +27,21 @@ with open('bd.csv') as csvfile:
             all_bds[bdstr].append(person)
         else:
             all_bds[bdstr] = [ person ]
-
-#print all_bds
-#print all_years
-
+'''
 if today in all_bds:
-    print "Congrats"
+    print "--- Congrats today to:"
     for person in all_bds[today]:
         age = int(fyear) - int(all_years[person])
         print person, "who turns", age, "years old today"
 else:
     print "No one to congratulate :("
+'''
+
+for mydays in range(0,days_ahead):
+    fdate = (date.today() + timedelta(days=mydays)).strftime('%m/%d').split('/')
+    futdate =  '{0}/{1}'.format(fdate[0], fdate[1])
+    if futdate in all_bds:
+        print "--- Heads up for", futdate
+        for person in all_bds[futdate]:
+            age = int(fyear) - int(all_years[person])
+            print person, "who turns", age, "years old"
