@@ -8,6 +8,8 @@ all_years = {}
 fdate = date.today().strftime('%m/%d').split('/')
 fyear = int(date.today().strftime('%Y'))
 
+today = '{0}/{1}'.format(fdate[0], fdate[1])
+
 with open('bd.csv') as csvfile:
     readCSV = csv.reader(csvfile)
     for row in readCSV:
@@ -23,3 +25,8 @@ with open('bd.csv') as csvfile:
 
 print all_bds
 print all_years
+
+if today in all_bds:
+    print "Congrats", all_bds[today]
+else:
+    print "No one to congratulate :("
