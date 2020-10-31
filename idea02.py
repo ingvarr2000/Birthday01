@@ -27,15 +27,6 @@ with open('bd.csv') as csvfile:
             all_bds[bdstr].append(person)
         else:
             all_bds[bdstr] = [ person ]
-'''
-if today in all_bds:
-    print "--- Congrats today to:"
-    for person in all_bds[today]:
-        age = int(fyear) - int(all_years[person])
-        print person, "who turns", age, "years old today"
-else:
-    print "No one to congratulate :("
-'''
 
 for mydays in range(0,days_ahead):
     fdate = (date.today() + timedelta(days=mydays)).strftime('%m/%d').split('/')
