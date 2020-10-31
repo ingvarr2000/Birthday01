@@ -1,5 +1,6 @@
 
-import csv, re
+import csv
+import re
 from datetime import date, timedelta
 
 all_bds = {}
@@ -26,11 +27,11 @@ with open('bd.csv') as csvfile:
         if bdstr in all_bds:
             all_bds[bdstr].append(person)
         else:
-            all_bds[bdstr] = [ person ]
+            all_bds[bdstr] = [person]
 
-for mydays in range(0,days_ahead):
+for mydays in range(0, days_ahead):
     fdate = (date.today() + timedelta(days=mydays)).strftime('%m/%d').split('/')
-    futdate =  '{0}/{1}'.format(fdate[0], fdate[1])
+    futdate = '{0}/{1}'.format(fdate[0], fdate[1])
     if futdate in all_bds:
         print "--- Heads up for", futdate
         for person in all_bds[futdate]:
